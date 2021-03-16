@@ -1,0 +1,22 @@
+{
+  "name": "project_3_product_manager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client": "cd client && npm run start",
+    "server": "cd backend && npx nodemon server.js",
+    "dev": "concurrently --kill-others-on-fail 'npm:server' 'npm:client'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.12.0"
+  },
+  "devDependencies": {
+    "concurrently": "^6.0.0"
+  }
+}
