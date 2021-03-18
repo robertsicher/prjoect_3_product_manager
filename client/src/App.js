@@ -2,7 +2,7 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navigation from "./components/nav/nav";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
-import Login from "./components/login/login";
+import Login from "./components/login/login.component";
 import Dashboard from "./components/dashboard/dashboard";
 import Catalogue from "./components/catalogue/catalogue";
 import Productcreation from "./components/productcreation/productcreation";

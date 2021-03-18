@@ -28,6 +28,9 @@ class Signup extends Component {
       email: this.state.email,
     };
 }
+
+
 }
+
 
 export default withRouter(Signup);
