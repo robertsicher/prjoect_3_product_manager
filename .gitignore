@@ -1,2 +1,7 @@
 node_modules/
 client/node_modules/
+app/config/
+app/controllers/
+app/models/
+app/routes/
+app/middlewares/
