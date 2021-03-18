@@ -19,6 +19,7 @@ function Navigation() {
       <FormControl type="text" placeholder="Search" className="mr-sm-2" />
       <Button className="mx-1" variant="outline-secondary">Search</Button>
       <Link to="/login"><Button className="mx-1" variant="outline-secondary">Login</Button></Link>
+      <Link to="/sign-up"><Button className="mx-1" variant="outline-secondary">SignUp</Button></Link>
     </Form>
     </Navbar.Collapse>
 </Navbar>
