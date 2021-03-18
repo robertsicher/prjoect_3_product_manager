@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const dbConfig = require("./app/config/db.config");
+const dbConfig = require("./app/config/db.config.js");
 const authUser = require("./app/routes/auth.routes");
 const retriveUser = require("./app/routes/user.routes");
 const app = express();
@@ -16,7 +16,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const db = require("./app/models");
 const Role = db.role;
 db.mongoose
-  .connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
+
+mongoose.connect("mongodb+srv://Nikstar-1@Project30.tgwyk.mongodb.net/test", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })

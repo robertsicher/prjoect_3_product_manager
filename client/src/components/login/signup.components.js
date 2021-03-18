@@ -28,10 +28,7 @@ class Signup extends Component {
       email: this.state.email,
     };
     try {
-      const resp = await axios.post(
-        "http://localhost:8080/api/auth/signup",
-        creadentials
-      );
+      const resp = await axios.post("http://localhost:8080/api/auth/signup", creadentials);
       if (resp.data.status) {
         localStorage.setItem("isLoggedIn", true);
         localStorage.setItem("@token", resp.data.accessToken);
@@ -48,12 +45,63 @@ class Signup extends Component {
     if (this.state.isLoggedIn) {
       return <Redirect to="/profile" />;
     }
-  }; 
+  };
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <h3>Sign Up</h3>
+        {this.state.show_alert ? (
+          <div className="alert alert-danger" role="alert">
+            {this.state.alert_message}
+          </div>
+        ) : null}
+        <div className="form-group">
+          <label>Username</label>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Enter Username"
+            value={this.state.username}
+            onChange={(e) => {
+              this.setState({ username: e.target.value });
+            }}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label>Email address</label>
+          <input
+            type="email"
+            className="form-control"
+            placeholder="Enter Emamil"
+            value={this.state.email}
+            onChange={(e) => {
+              this.setState({ email: e.target.value });
+            }}
+            required
+          />
+        </div>
 
+        <div className="form-group">
+          <label>Password</label>
+          <input
+            type="password"
+            className="form-control"
+            placeholder="Enter password"
+            value={this.state.password}
+            onChange={(e) => {
+              this.setState({ password: e.target.value });
+            }}
+            required
+          />
+        </div>
+        <button type="submit" className="btn btn-primary btn-block">
+          Submit
+        </button>
+        {this.renderRedirect()}
+      </form>
+    );
+  }
 }
-
-
-
-
 
 export default withRouter(Signup);
