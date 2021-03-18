@@ -14,10 +14,10 @@ app.use(bodyParser.json());
 //Parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 const db = require("./app/models");
-const Role = db.role;
-db.mongoose
 
-mongoose.connect("mongodb+srv://Nikstar-1@Project30.tgwyk.mongodb.net/test", {
+const Role = db.role;
+const mongoUrl = process.env.MONGODB_URI
+db.mongoose.connect(mongoUrl, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
