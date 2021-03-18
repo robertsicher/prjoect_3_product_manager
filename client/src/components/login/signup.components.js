@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Redirect, withRouter } from "react-router-dom";
+import { Container } from "react-bootstrap";
 
 class Signup extends Component {
   constructor(props) {
@@ -49,6 +50,7 @@ class Signup extends Component {
   };
   render() {
     return (
+      <Container className="mt-2">
       <form onSubmit={this.handleSubmit}>
         <h3>Sign Up</h3>
         {this.state.show_alert ? (
@@ -101,6 +103,7 @@ class Signup extends Component {
         </button>
         {this.renderRedirect()}
       </form>
+      </ Container>
     );
   }
 }
