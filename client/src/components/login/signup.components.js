@@ -27,10 +27,33 @@ class Signup extends Component {
       password: this.state.password,
       email: this.state.email,
     };
+    try {
+      const resp = await axios.post(
+        "http://localhost:8080/api/auth/signup",
+        creadentials
+      );
+      if (resp.data.status) {
+        localStorage.setItem("isLoggedIn", true);
+        localStorage.setItem("@token", resp.data.accessToken);
+        this.setState({ isLoggedIn: true });
+      } else {
+        this.setState({ show_alert: true, alert_message: resp.data.message });
+      }
+    } catch (err) {
+      // Handle Error Here
+      console.error(err.massage);
+    }
+  };
+  renderRedirect = () => {
+    if (this.state.isLoggedIn) {
+      return <Redirect to="/profile" />;
+    }
+  }; 
+
 }
 
 
-}
+
 
 
 export default withRouter(Signup);
