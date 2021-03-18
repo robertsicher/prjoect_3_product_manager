@@ -1,7 +1,8 @@
-//import {Form, Row, Col, Container, Button} from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 import { Redirect, withRouter } from "react-router-dom";
 import React, { Component } from "react";
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 
 class Login extends Component {
   constructor(props) {
@@ -53,6 +54,7 @@ class Login extends Component {
   };
   render() {
     return (
+      <Container className="mt-2">
       <form onSubmit={this.handleSubmit}>
         <h3>Sign In</h3>
         {this.state.show_alert ? (
@@ -92,6 +94,8 @@ class Login extends Component {
         </button>
         {this.renderRedirect()}
       </form>
+      <Link to="/sign-up"><p className="m-1">Not got an account? Sign Up here</p></Link>
+      </Container>
     );
   }
 }
