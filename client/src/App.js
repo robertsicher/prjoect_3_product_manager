@@ -13,6 +13,7 @@ import Login from "./components//login/login.component";
 import SignUp from "./components/login/signup.components";
 import HomePage from "./pages/HomePage";
 import ProfilePage from "./pages/ProfilePage";
+import Cloudinary from './components/Cloudinary';
 
 function App() {
   return (
@@ -21,8 +22,6 @@ function App() {
         <Navigation />
         <Switch>
           <Route path="/" exact component={Dashboard} />
-
-          {/*Rekha*/}
           <Route exact path="/" component={HomePage} />
           <Route path="/sign-in" component={Login} />
           <Route path="/sign-up" component={SignUp} />
@@ -32,8 +31,10 @@ function App() {
           <Route path="/catalogue" exact component={Catalogue} />
           <Route path="/new-product" exact component={Productcreation} />
           <Route path="/export" exact component={CatalogueExport} />
+          <Route path="/cloudinary" component={Cloudinary} />
           <Route path="/404" exact component={ErrorPage} />
           <Redirect from="*" to="/404" />
+         
         </Switch>
       </div>
     </Router>
