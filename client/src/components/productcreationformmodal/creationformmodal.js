@@ -5,6 +5,14 @@ export default class Productcreationmodal extends Component {
   constructor(props) {
     super(props);
 
+    this.onChangeProductname = this.onChangeProductname.bind(this); 
+    this.onChangeManufacturer = this.onChangeManufacturer.bind(this); 
+    this.onChangePartNumber = this.onChangePartNumber.bind(this);
+    this.onChangeProductCategory = this.onChangeProductCategory.bind(this);
+    this.onChangeDimensions = this.onChangeDimensions.bind(this);
+    this.onChangeProductColours = this.onChangeProductColours.bind(this);
+    this.onChangeMarketingInfo = this.onChangeMarketingInfo.bind(this);
+
     this.state = {
       productname:'',
       manufacturer:'',
@@ -76,8 +84,8 @@ export default class Productcreationmodal extends Component {
 
     const [show, setShow] = useState(false);
   
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    handleClose = () => setShow(false);
+    handleShow = () => setShow(true);
   
     render (){
       return(
@@ -91,34 +99,34 @@ export default class Productcreationmodal extends Component {
             <Modal.Title>Create a new product</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Form>
+            <Form onSubmit={this.onSubmit}>
               <Form.Group controlId="exampleForm.ControlInput1">
                 <Form.Label>Product Name</Form.Label>
-                <Form.Control type="textarea" />
-              </Form.Group>
-              <Form.Group controlId="exampleForm.ControlInput1">
-                <Form.Label>Manufacturer</Form.Label>
-                <Form.Control type="textarea" />
+                <Form.Control type="textarea" required value={this.state.productname} onChange={this.onChangeProductname}/>
               </Form.Group>
               <Form.Group controlId="exampleForm.ControlInput1">
                 <Form.Label>Part Number</Form.Label>
-                <Form.Control type="textarea" />
+                <Form.Control type="textarea" required value={this.state.partnumber} onChange={this.onChangePartNumber}/>
+              </Form.Group>
+              <Form.Group controlId="exampleForm.ControlInput1">
+                <Form.Label>Manufacturer</Form.Label>
+                <Form.Control type="textarea" required value={this.state.manufacturer} onChange={this.onChangeManufacturer}/>
               </Form.Group>
               <Form.Group controlId="exampleForm.ControlInput1">
                 <Form.Label>Product Category</Form.Label>
-                <Form.Control type="textarea" />
+                <Form.Control type="textarea" required value={this.state.productcategory} onChange={this.onChangeProductCategory}/>
               </Form.Group>
               <Form.Group controlId="exampleForm.ControlInput1">
                 <Form.Label>Dimensions</Form.Label>
-                <Form.Control type="textarea" />
+                <Form.Control type="textarea" required value={this.state.dimensions} onChange={this.onChangeDimensions}/>
               </Form.Group>
               <Form.Group controlId="exampleForm.ControlInput1">
                 <Form.Label>Colours</Form.Label>
-                <Form.Control type="textarea" />
+                <Form.Control type="textarea" required value={this.state.productcolours} onChange={this.onChangeProductColours}/>
               </Form.Group>
               <Form.Group controlId="exampleForm.ControlInput1">
                 <Form.Label>Marketing Text</Form.Label>
-                <Form.Control as="textarea" rows={5} />
+                <Form.Control as="textarea" rows={5} required value={this.state.marketinginfo} onChange={this.onChangeMarketingInfo}/>
               </Form.Group>
             </Form>
           </Modal.Body>
@@ -126,8 +134,8 @@ export default class Productcreationmodal extends Component {
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
-            <Button variant="primary" onClick={handleClose}>
-              Save Changes
+            <Button variant="primary" type="submit" >
+              Add Product
             </Button>
           </Modal.Footer>
         </Modal>
