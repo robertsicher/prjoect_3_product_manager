@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Redirect, withRouter } from "react-router-dom";
+import { Container } from 'react-bootstrap'
 
 class ProfilePage extends Component {
   constructor(props) {
@@ -80,8 +81,9 @@ class ProfilePage extends Component {
 
   render() {
     return (
+      <Container>
       <div className="text-center ">
-        <h1>Welcome to Jwt ProfilePage</h1>
+        <h1>Account Page</h1>
         <h4> Email: {this.state.email}</h4>
         <h4>Username: {this.state.username}</h4>
         <button type="submit" onClick={this.handleSubmit} className="btn btn-outline-primary btn-block mt-3">
@@ -90,6 +92,7 @@ class ProfilePage extends Component {
         {/* </Link> */}
         {this.renderRedirect()}
       </div>
+      </Container>
     );
   }
 }
