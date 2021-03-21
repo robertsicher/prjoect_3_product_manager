@@ -1,5 +1,5 @@
 import { Table } from "react-bootstrap";
-import { PhotoPlaceholder } from 'react-placeholder-image';
+import TableRow from "./tablerow";
 
 function ProductTable() {
   return (
@@ -14,25 +14,7 @@ function ProductTable() {
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                <td className="align-middle">1234567890</td>
-                <td className="align-middle p-0"><PhotoPlaceholder width={75} height={75}/></td>
-                <td className="align-middle">ReSet Call Point</td>
-                <td className="align-middle">Red</td>
-                <td className="align-middle">46x46x4</td>
-                </tr>
-                <tr>
-                <td>2</td>
-                <td><PhotoPlaceholder width={75} height={75}/></td>
-                <td>Thornton</td>
-                <td>@fat</td>
-                </tr>
-                <tr>
-                <td>3</td>
-                <td><PhotoPlaceholder width={75} height={75}/></td>
-                <td>Thornton</td>
-                <td>@twitter</td>
-                </tr>
+                <TableRow />
             </tbody>
         </Table>
   );

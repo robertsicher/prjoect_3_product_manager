@@ -8,42 +8,31 @@ const Product = mongoose.model(
       unique: true,
       trim: true
     },
-    // manufacturer: {
-    //   type: String,
-    //   required: true,
-    //   unique: true,
-    //   trim: true
-    // },
-    // partnumber: {
-    //   type: String,
-    //   required: true,
-    //   unique: true,
-    //   trim: true
-    // },
-    // productcategory: {
-    //   type: String,
-    //   required: true,
-    //   unique: true,
-    //   trim: true
-    // },
-    // dimensions: {
-    //   type: String,
-    //   required: true,
-    //   unique: true,
-    //   trim: true
-    // },
-    // productcolours: {
-    //   type: String,
-    //   required: true,
-    //   unique: true,
-    //   trim: true
-    // },
-    // marketinginfo: {
-    //   type: String,
-    //   required: true,
-    //   unique: true,
-    //   trim: true
-    // },
+    manufacturer: {
+      type: String,
+      trim: true
+    },
+    partnumber: {
+      type: String,
+      unique: true,
+      trim: true
+    },
+    productcategory: {
+      type: String,
+      trim: true
+    },
+    dimensions: {
+      type: String,
+      trim: true
+    },
+    productcolours: {
+      type: String,
+      trim: true
+    },
+    marketinginfo: {
+      type: String,
+      trim: true
+    },
   })
 );
 

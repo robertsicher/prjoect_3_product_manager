@@ -16,6 +16,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 const db = require("./app/models");
 
+
 const Role = db.role;
 const mongoUrl = process.env.MONGODB_URI
 db.mongoose.connect(mongoUrl, {
