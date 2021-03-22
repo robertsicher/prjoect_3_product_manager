@@ -1,5 +1,5 @@
 import {Button, Modal, Form} from 'react-bootstrap';
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 
 export default class Productcreationmodal extends Component {
   constructor(props) {
@@ -21,8 +21,13 @@ export default class Productcreationmodal extends Component {
       dimensions:'',
       productcolours:'',
       marketinginfo:'',
+      showHide : false,
     }
   };
+
+  handleModalShowHide(){
+    this.setState({showHide: !this.state.showHide})
+  }
 
   onChangeProductname(e){
     this.setState({
@@ -71,7 +76,7 @@ export default class Productcreationmodal extends Component {
 
     const product = {
       productname: this.state.productname,
-      manufacturer: this.stat.manufacturer,
+      manufacturer: this.state.manufacturer,
       partnumber: this.state.partnumber,
       productcategory: this.state.productcategory,
       dimensions: this.state.dimensions,
@@ -82,20 +87,20 @@ export default class Productcreationmodal extends Component {
     console.log(product)
   }
 
-    const [show, setShow] = useState(false);
+    // const [show, setShow] = useState(false);
   
-    handleClose = () => setShow(false);
-    handleShow = () => setShow(true);
+    // handleClose = () => setShow(false);
+    // handleShow = () => setShow(true);
   
     render (){
       return(
       <>
-        <Button variant="primary" className="mx-2" onClick={handleShow}>
+        <Button variant="primary" className="mx-2" onClick={() => this.handleModalShowHide()}>
           Add a new product
         </Button>
   
-        <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
+        <Modal show={this.state.showHide}>
+          <Modal.Header closeButton onClick={() => this.handleModalShowHide()}>
             <Modal.Title>Create a new product</Modal.Title>
           </Modal.Header>
           <Modal.Body>
@@ -128,15 +133,16 @@ export default class Productcreationmodal extends Component {
                 <Form.Label>Marketing Text</Form.Label>
                 <Form.Control as="textarea" rows={5} required value={this.state.marketinginfo} onChange={this.onChangeMarketingInfo}/>
               </Form.Group>
+              <Button variant="primary" type="submit" value="Create New Product">
+              Add Product
+            </Button>
             </Form>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
+            <Button variant="secondary" onClick={() => this.handleModalShowHide()}>
               Close
             </Button>
-            <Button variant="primary" type="submit" >
-              Add Product
-            </Button>
+
           </Modal.Footer>
         </Modal>
       </>
