@@ -76,7 +76,7 @@ class Signup extends Component {
           <input
             type="email"
             className="form-control"
-            placeholder="Enter Emamil"
+            placeholder="Enter Email"
             value={this.state.email}
             onChange={(e) => {
               this.setState({ email: e.target.value });

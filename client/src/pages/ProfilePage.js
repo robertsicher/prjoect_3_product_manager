@@ -83,7 +83,9 @@ class ProfilePage extends Component {
     return (
       <Container>
       <div className="text-center ">
+
         <h1>Account Page</h1>
+
         <h4> Email: {this.state.email}</h4>
         <h4>Username: {this.state.username}</h4>
         <button type="submit" onClick={this.handleSubmit} className="btn btn-outline-primary btn-block mt-3">

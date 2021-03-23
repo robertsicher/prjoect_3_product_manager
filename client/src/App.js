@@ -2,7 +2,6 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navigation from "./components/nav/nav";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
-// Updated by Rekha please "approve" import Login from "./components/login/login.component";
 import Dashboard from "./components/dashboard/dashboard";
 import Catalogue from "./components/catalogue/catalogue";
 import Productcreation from "./components/productcreation/productcreation";
@@ -13,7 +12,11 @@ import Login from "./components//login/login.component";
 import SignUp from "./components/login/signup.components";
 import HomePage from "./pages/HomePage";
 import ProfilePage from "./pages/ProfilePage";
+
 import Addsuccess from "./components/addsuccess/addsuccess";
+
+import Cloudinary from "./components/Cloudinary";
+
 
 function App() {
   return (
@@ -22,8 +25,6 @@ function App() {
         <Navigation />
         <Switch>
           <Route path="/" exact component={Dashboard} />
-
-          {/*Rekha*/}
           <Route exact path="/" component={HomePage} />
           <Route path="/sign-in" component={Login} />
           <Route path="/sign-up" component={SignUp} />
@@ -34,6 +35,7 @@ function App() {
           <Route path="/productsuccess" exact component={Addsuccess} />
           <Route path="/new-product" exact component={Productcreation} />
           <Route path="/export" exact component={CatalogueExport} />
+          <Route path="/cloudinary" component={Cloudinary} />
           <Route path="/404" exact component={ErrorPage} />
           <Redirect from="*" to="/404" />
         </Switch>
