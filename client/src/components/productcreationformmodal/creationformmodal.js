@@ -1,5 +1,6 @@
 import {Button, Modal, Form} from 'react-bootstrap';
 import React, { Component } from "react";
+import axios from "axios";
 
 export default class Productcreationmodal extends Component {
   constructor(props) {
@@ -12,6 +13,7 @@ export default class Productcreationmodal extends Component {
     this.onChangeDimensions = this.onChangeDimensions.bind(this);
     this.onChangeProductColours = this.onChangeProductColours.bind(this);
     this.onChangeMarketingInfo = this.onChangeMarketingInfo.bind(this);
+    this.onSubmit = this.onSubmit.bind(this); 
 
     this.state = {
       productname:'',
@@ -84,7 +86,12 @@ export default class Productcreationmodal extends Component {
       marketinginfo: this.state.marketinginfo,
     }
 
-    console.log(product)
+    console.log(product);
+
+    axios.post('http://localhost:8080/product/add', product)
+    .then(res => console.log(res.data));
+
+    window.location="/productsuccess"
   }
 
     // const [show, setShow] = useState(false);

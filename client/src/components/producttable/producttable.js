@@ -1,8 +1,32 @@
+import axios from "axios";
+import { Component } from "react";
 import { Table } from "react-bootstrap";
 import TableRow from "./tablerow";
 
-function ProductTable() {
-  return (
+export default class ProductTable extends Component {
+    constructor(props){
+        super(props);
+        this.state = {products: []};
+    }
+
+    componentDidMount(){
+        axios.get('http://localhost:8080/product/')
+        .then(response => {
+            this.setState({ products: response.data})
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    }
+
+    productList(){
+        return this.state.products.map( currentproduct =>{
+            return <TableRow product={currentproduct} key={currentproduct._id} />;
+        })
+    }
+
+  render(){
+    return (
         <Table striped bordered hover variant="dark">
             <thead>
                 <tr>
@@ -14,11 +38,11 @@ function ProductTable() {
                 </tr>
             </thead>
             <tbody>
-                <TableRow />
+                {this.productList()}
             </tbody>
         </Table>
   );
 }
+}
 
-export default ProductTable;
 

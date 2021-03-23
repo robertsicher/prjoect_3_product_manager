@@ -13,6 +13,7 @@ import Login from "./components//login/login.component";
 import SignUp from "./components/login/signup.components";
 import HomePage from "./pages/HomePage";
 import ProfilePage from "./pages/ProfilePage";
+import Addsuccess from "./components/addsuccess/addsuccess";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
 
           <Route path="/login" exact component={Login} />
           <Route path="/catalogue" exact component={Catalogue} />
+          <Route path="/productsuccess" exact component={Addsuccess} />
           <Route path="/new-product" exact component={Productcreation} />
           <Route path="/export" exact component={CatalogueExport} />
           <Route path="/404" exact component={ErrorPage} />
