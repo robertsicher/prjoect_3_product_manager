@@ -1,65 +1,159 @@
-import {Button, Modal, Form} from 'react-bootstrap'
-import React, { useState } from "react";
+import {Button, Modal, Form} from 'react-bootstrap';
+import React, { Component } from "react";
+import axios from "axios";
 
-function Productcreationmodal() {
-    const [show, setShow] = useState(false);
+export default class Productcreationmodal extends Component {
+  constructor(props) {
+    super(props);
+
+    this.onChangeProductname = this.onChangeProductname.bind(this); 
+    this.onChangeManufacturer = this.onChangeManufacturer.bind(this); 
+    this.onChangePartNumber = this.onChangePartNumber.bind(this);
+    this.onChangeProductCategory = this.onChangeProductCategory.bind(this);
+    this.onChangeDimensions = this.onChangeDimensions.bind(this);
+    this.onChangeProductColours = this.onChangeProductColours.bind(this);
+    this.onChangeMarketingInfo = this.onChangeMarketingInfo.bind(this);
+    this.onSubmit = this.onSubmit.bind(this); 
+
+    this.state = {
+      productname:'',
+      manufacturer:'',
+      partnumber:'',
+      productcategory:'',
+      dimensions:'',
+      productcolours:'',
+      marketinginfo:'',
+      showHide : false,
+    }
+  };
+
+  handleModalShowHide(){
+    this.setState({showHide: !this.state.showHide})
+  }
+
+  onChangeProductname(e){
+    this.setState({
+      productname: e.target.value
+    });
+  }
+
+  onChangeManufacturer(e){
+    this.setState({
+      manufacturer: e.target.value
+    });
+  }
+
+  onChangePartNumber(e){
+    this.setState({
+      partnumber: e.target.value
+    });
+  }
+
+  onChangeProductCategory(e){
+    this.setState({
+      productcategory: e.target.value
+    });
+  }
   
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+  onChangeDimensions(e){
+    this.setState({
+      dimensions: e.target.value
+    });
+  }
+
+  onChangeProductColours(e){
+    this.setState({
+      productcolours: e.target.value
+    });
+  }
+
+  onChangeMarketingInfo(e){
+    this.setState({
+      marketinginfo: e.target.value
+    });
+  }
+
+  onSubmit(e){
+    e.preventDefault();
+
+    const product = {
+      productname: this.state.productname,
+      manufacturer: this.state.manufacturer,
+      partnumber: this.state.partnumber,
+      productcategory: this.state.productcategory,
+      dimensions: this.state.dimensions,
+      productcolours: this.state.productcolours,
+      marketinginfo: this.state.marketinginfo,
+    }
+
+    console.log(product);
+
+    axios.post('http://localhost:8080/product/add', product)
+    .then(res => console.log(res.data));
+
+    window.location="/productsuccess"
+  }
+
+    // const [show, setShow] = useState(false);
   
-    return (
+    // handleClose = () => setShow(false);
+    // handleShow = () => setShow(true);
+  
+    render (){
+      return(
       <>
-        <Button variant="primary" className="mx-2" onClick={handleShow}>
+        <Button variant="primary" className="mx-2" onClick={() => this.handleModalShowHide()}>
           Add a new product
         </Button>
   
-        <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
+        <Modal show={this.state.showHide}>
+          <Modal.Header closeButton onClick={() => this.handleModalShowHide()}>
             <Modal.Title>Create a new product</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Form>
+            <Form onSubmit={this.onSubmit}>
               <Form.Group controlId="exampleForm.ControlInput1">
-                <Form.Label>Product Code</Form.Label>
-                <Form.Control type="textarea" />
+                <Form.Label>Product Name</Form.Label>
+                <Form.Control type="textarea" required value={this.state.productname} onChange={this.onChangeProductname}/>
               </Form.Group>
-              <Form.Group controlId="exampleForm.ControlSelect1">
-                <Form.Label>Example select</Form.Label>
-                <Form.Control as="select">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </Form.Control>
+              <Form.Group controlId="exampleForm.ControlInput1">
+                <Form.Label>Part Number</Form.Label>
+                <Form.Control type="textarea" required value={this.state.partnumber} onChange={this.onChangePartNumber}/>
               </Form.Group>
-              <Form.Group controlId="exampleForm.ControlSelect2">
-                <Form.Label>Example multiple select</Form.Label>
-                <Form.Control as="select" multiple>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </Form.Control>
+              <Form.Group controlId="exampleForm.ControlInput1">
+                <Form.Label>Manufacturer</Form.Label>
+                <Form.Control type="textarea" required value={this.state.manufacturer} onChange={this.onChangeManufacturer}/>
               </Form.Group>
-              <Form.Group controlId="exampleForm.ControlTextarea1">
-                <Form.Label>Example textarea</Form.Label>
-                <Form.Control as="textarea" rows={3} />
+              <Form.Group controlId="exampleForm.ControlInput1">
+                <Form.Label>Product Category</Form.Label>
+                <Form.Control type="textarea" required value={this.state.productcategory} onChange={this.onChangeProductCategory}/>
               </Form.Group>
+              <Form.Group controlId="exampleForm.ControlInput1">
+                <Form.Label>Dimensions</Form.Label>
+                <Form.Control type="textarea" required value={this.state.dimensions} onChange={this.onChangeDimensions}/>
+              </Form.Group>
+              <Form.Group controlId="exampleForm.ControlInput1">
+                <Form.Label>Colours</Form.Label>
+                <Form.Control type="textarea" required value={this.state.productcolours} onChange={this.onChangeProductColours}/>
+              </Form.Group>
+              <Form.Group controlId="exampleForm.ControlInput1">
+                <Form.Label>Marketing Text</Form.Label>
+                <Form.Control as="textarea" rows={5} required value={this.state.marketinginfo} onChange={this.onChangeMarketingInfo}/>
+              </Form.Group>
+              <Button variant="primary" type="submit" value="Create New Product">
+              Add Product
+            </Button>
             </Form>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
+            <Button variant="secondary" onClick={() => this.handleModalShowHide()}>
               Close
             </Button>
-            <Button variant="primary" onClick={handleClose}>
-              Save Changes
-            </Button>
+
           </Modal.Footer>
         </Modal>
       </>
-    );
+      );
+    }
   }
   
-  export default Productcreationmodal;

@@ -4,6 +4,7 @@ const cors = require("cors");
 const dbConfig = require("./app/config/db.config.js");
 const authUser = require("./app/routes/auth.routes");
 const retriveUser = require("./app/routes/user.routes");
+const productRouter = require('./app/routes/products.routes');
 const app = express();
 var corsOptions = {
   origin: "http://localhost:3000",
@@ -14,6 +15,7 @@ app.use(bodyParser.json());
 //Parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 const db = require("./app/models");
+
 
 const Role = db.role;
 const mongoUrl = process.env.MONGODB_URI
@@ -35,6 +37,8 @@ app.get("/", (req, res) => {
 //Routes
 app.use("/", authUser);
 app.use("/", retriveUser);
+app.use("/product", productRouter);
+
 // Set port, listen for requests
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
