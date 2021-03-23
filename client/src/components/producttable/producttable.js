@@ -2,6 +2,7 @@ import axios from "axios";
 import { Component } from "react";
 import { Table } from "react-bootstrap";
 import TableRow from "./tablerow";
+import {CSVLink} from 'react-csv';
 
 export default class ProductTable extends Component {
     constructor(props){
@@ -19,7 +20,7 @@ export default class ProductTable extends Component {
         })
     }
 
-    productList(){
+    productList(){ 
         return this.state.products.map( currentproduct =>{
             return <TableRow product={currentproduct} key={currentproduct._id} />;
         })
@@ -27,6 +28,10 @@ export default class ProductTable extends Component {
 
   render(){
     return (
+        <> 
+        <CSVLink data={this.state.products}>
+            Download me
+        </CSVLink>
         <Table striped bordered hover variant="dark">
             <thead>
                 <tr>
@@ -41,6 +46,7 @@ export default class ProductTable extends Component {
                 {this.productList()}
             </tbody>
         </Table>
+        </>
   );
 }
 }
