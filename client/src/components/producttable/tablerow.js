@@ -13,7 +13,7 @@ function TableRow(props) {
     <>
                 <tr onClick={handleShow}>
                 <td className="align-middle">{props.product.partnumber}</td>
-                <td className="align-middle p-0"><PhotoPlaceholder width={75} height={75}/></td>
+                <td className="align-middle p-0"><img width="200" src={props.product.image_url}/></td>
                 <td className="align-middle">{props.product.productname}</td>
                 <td className="align-middle">{props.product.productcategory}</td>
                 </tr>

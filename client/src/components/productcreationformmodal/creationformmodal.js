@@ -24,6 +24,7 @@ export default class Productcreationmodal extends Component {
       dimensions: "",
       productcolours: "",
       marketinginfo: "",
+      image_url:"",
       showHide: false,
     };
   }
@@ -85,6 +86,7 @@ export default class Productcreationmodal extends Component {
       dimensions: this.state.dimensions,
       productcolours: this.state.productcolours,
       marketinginfo: this.state.marketinginfo,
+      image_url:this.state.image_url
     };
 
     console.log(product);
@@ -107,6 +109,9 @@ export default class Productcreationmodal extends Component {
       },
       (error, result) => {
         if (!error && result && result.event === "success") {
+          this.setState({
+            image_url:result.info.url
+          })
           console.log("Done! Here is the image info: ", result.info);
         }
       }

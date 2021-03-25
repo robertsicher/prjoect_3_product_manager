@@ -15,6 +15,7 @@ router.route('/add').post((req,res) => {
     const dimensions = req.body.dimensions;
     const productcolours = req.body.productcolours;
     const marketinginfo = req.body.marketinginfo;
+    const  image_url = req.body.image_url;
     console.log("add post req.body:", req.body);
     console.log("add post req.query:", req.query);
 
@@ -27,7 +28,7 @@ router.route('/add').post((req,res) => {
         dimensions,
         productcolours,
         marketinginfo,
-
+        image_url
     });
 
     newProduct.save()
@@ -57,7 +58,7 @@ router.route('/update/:id').post((req,res) => {
         product.dimensions = req.body.dimensions;
         product.productcolours = req.body.productcolours;
         product.marketinginfo = req.body.marketinginfo;
-
+        product.image_url = req.body.image_url;
         product.save()
         .then(() => res.json('Product Updated'))
         .catch(err => res.status(400).json('Error: ' + err));

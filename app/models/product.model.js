@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const Product = mongoose.model(
   "Product",
   new mongoose.Schema({
+   
     productname: {
       type: String,
       unique: true,
@@ -32,6 +33,11 @@ const Product = mongoose.model(
     marketinginfo: {
       type: String,
       trim: true
+    },
+    image_url:{
+      type:String,
+      unique:true,
+      trim:true
     },
   })
 );
