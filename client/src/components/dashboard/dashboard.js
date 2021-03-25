@@ -7,20 +7,7 @@ import axios from "axios";
 import {Redirect,withRouter}from "react-router-dom";
 
 
-class Dashboard extends React.Component{
-
-
-function Dashboard() {
-  return (
-    <div>
-        <Container className="mt-2">
-          <h1>Dashboard</h1>   
-          <Csvuploadmodal />
-        </Container>
-    </div>
-  );
-}
-
+export default class Dashboard extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
@@ -94,8 +81,3 @@ function Dashboard() {
     )
   }
 };
-
-
-export default Dashboard;
-
-
