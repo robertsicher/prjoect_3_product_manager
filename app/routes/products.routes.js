@@ -38,7 +38,7 @@ router.route('/add').post((req,res) => {
 
 router.route('/:id').get((req,res) => {
     Product.findById(req.params.id)
-    .then(() => res.json('Product'))
+    .then(product => res.json(product))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 

@@ -1,7 +1,7 @@
 import React from "react";
 import ProductTable from "../producttable/producttable";
 import axios from "axios";
-import { Redirect, withRouter } from "react-router-dom";
+import { Redirect,  } from "react-router-dom";
 class Catalogue extends React.Component{
   constructor(props) {
     super(props);

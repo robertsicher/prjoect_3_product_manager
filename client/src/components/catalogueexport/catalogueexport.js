@@ -2,7 +2,7 @@ import axios from "axios";
 import { Component } from "react";
 
 import TableRow from "../producttable/tablerow";
-import { Redirect, withRouter } from "react-router-dom";
+import { Redirect, } from "react-router-dom";
 export default class CatalogueExport extends Component {
     constructor(props){
         super(props);
@@ -83,5 +83,3 @@ export default class CatalogueExport extends Component {
   );
 }
 }
-
-
