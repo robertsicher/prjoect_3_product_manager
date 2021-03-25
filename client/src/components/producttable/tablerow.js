@@ -1,4 +1,3 @@
-import { PhotoPlaceholder } from 'react-placeholder-image';
 import {Button, Modal, Card, } from 'react-bootstrap';
 import React, {useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -13,7 +12,7 @@ function TableRow(props) {
     <>
                 <tr onClick={handleShow}>
                 <td className="align-middle">{props.product.partnumber}</td>
-                <td className="align-middle p-0"><img width="200" src={props.product.image_url}/></td>
+                <td className="align-middle p-0"><img width="150" src={props.product.image_url} alt="product"/></td>
                 <td className="align-middle">{props.product.productname}</td>
                 <td className="align-middle">{props.product.productcategory}</td>
                 </tr>
@@ -24,7 +23,7 @@ function TableRow(props) {
                         <Card.Body>
                           <Card.Title>{props.product.partnumber}</Card.Title>
                           <Card.Subtitle className="mb-2 text-muted">{props.product.productname}</Card.Subtitle>
-                          <Card.Img variant="top" src="holder.js/100px180" />
+                          <Card.Img variant="top" src={props.product.image_url} alt="product image"/>
                           <Card.Text>
                             <h4>Marketing</h4>
                           {props.product.marketinginfo}

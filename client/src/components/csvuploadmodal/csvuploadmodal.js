@@ -1,5 +1,5 @@
 // import {Button, Modal, } from 'react-bootstrap';
-import React, { useState } from "react";
+import React from "react";
 import { FlatfileButton } from "@flatfile/react";
 import axios from "axios";
 
@@ -20,6 +20,8 @@ function Csvuploadmodal() {
                 { label: "Dimensions", key: "dimensions" },
                 { label: "Colours", key: "productcolours" },
                 { label: "Product Description", key: "marketinginfo" },
+                { label: "Image", key: "image_url" },
+
 
               ],
               managed: true

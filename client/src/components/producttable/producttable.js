@@ -1,8 +1,9 @@
 import axios from "axios";
 import { Component } from "react";
-import { Table } from "react-bootstrap";
+import { Table, } from "react-bootstrap";
 import TableRow from "./tablerow";
 import { CSVLink } from "react-csv";
+import './producttable.css'
 
 export default class ProductTable extends Component {
 
@@ -18,10 +19,8 @@ export default class ProductTable extends Component {
 //     super(props);
 //     this.state = { products: [], filteredProducts: [] };
 //   }
-
-
-  componentDidMount() {
-    axios
+    getProducts() {
+      axios
       .get("http://localhost:8080/product/")
       .then((response) => {
         this.setState({ products: response.data, filteredProducts: response.data });
@@ -29,26 +28,31 @@ export default class ProductTable extends Component {
       .catch((error) => {
         console.log(error);
       });
+    }
+
+  componentDidMount() {
+    this.getProducts();
   }
 
     deleteProduct(id) {
         axios.delete('http://localhost:8080/product/'+id)
-        .then(res => console.log(res.data));
+        .then(res => this.getProducts());
         this.setState({
         products: this.state.products.filter(el => el._id !== id)
+
         })
     }
 
-    productList(){ 
-        return this.state.products.map( currentproduct =>{
-            return <TableRow product={currentproduct} deleteProduct={this.deleteProduct} key={currentproduct._id} />;
-        })
-    }
+    // productList(){ 
+    //     return this.state.products.map( currentproduct =>{
+    //         return <TableRow product={currentproduct} deleteProduct={this.deleteProduct} key={currentproduct._id} />;
+    //     })
+    // }
 
 
   productList() {
-    return this.state.filteredProducts.map((currentproduct) => {
-      return <TableRow product={currentproduct} key={currentproduct._id} />;
+    return this.state.filteredProducts.map(currentproduct => {
+      return <TableRow product={currentproduct} deleteProduct={this.deleteProduct} key={currentproduct._id} />;
     });
   }
   handleSort(e) {
@@ -64,9 +68,10 @@ export default class ProductTable extends Component {
 
     return (
       <div className="">
-        <CSVLink data={this.state.products}>Download me</CSVLink>
+   <CSVLink className='d-inline nounderline btn btn-secondary mr-2' data={this.state.products}>Download the Catalogue </CSVLink>
+        
         <input
-          className=" form-control px-3 "
+          className=" d-inline form-control px-3 "
           type="text"
           placeholder="Search Products"
           style={{

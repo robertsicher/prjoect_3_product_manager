@@ -3,9 +3,8 @@ import Productcreationmodal from "../productcreationformmodal/creationformmodal"
 import Csvuploadmodal from '../csvuploadmodal/csvuploadmodal'
 
 import React from "react";
-import ProductTable from "../producttable/producttable";
 import axios from "axios";
-import { Redirect, withRouter } from "react-router-dom";
+import { Redirect} from "react-router-dom";
 class Productcreation extends React.Component {
   constructor(props) {
     super(props);
@@ -70,9 +69,6 @@ class Productcreation extends React.Component {
       <div>
         <h1>Add a new product</h1>
         <Container>
-
-                <Productcreationmodal />
-
           <Row>
             <Productcreationmodal />
             <Csvuploadmodal />

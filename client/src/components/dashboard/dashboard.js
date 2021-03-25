@@ -1,10 +1,8 @@
 import React from "react";
 import { Container } from "react-bootstrap";
 
-import Csvuploadmodal from "../csvuploadmodal/csvuploadmodal";
-
 import axios from "axios";
-import {Redirect,withRouter}from "react-router-dom";
+import {Redirect}from "react-router-dom";
 
 
 export default class Dashboard extends React.Component{
