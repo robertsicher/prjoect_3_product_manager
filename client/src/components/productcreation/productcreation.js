@@ -1,5 +1,4 @@
-import { Container, Row } from "react-bootstrap";
-import Csvuploadmodal from "../csvuploadmodal/csvuploadmodal";
+import { Container, } from "react-bootstrap";
 import Productcreationmodal from "../productcreationformmodal/creationformmodal";
 
 
@@ -8,10 +7,7 @@ function Productcreation() {
     <div>
         <h1>Add a new product</h1>
         <Container>
-            <Row>
                 <Productcreationmodal />
-                <Csvuploadmodal/>
-            </Row>
         </Container>
     </div>
   );

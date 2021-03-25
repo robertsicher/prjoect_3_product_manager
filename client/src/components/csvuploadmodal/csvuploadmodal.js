@@ -1,32 +1,37 @@
-import {Button, Modal, } from 'react-bootstrap'
+// import {Button, Modal, } from 'react-bootstrap';
 import React, { useState } from "react";
+import { FlatfileButton } from "@flatfile/react";
+import axios from "axios";
+
 
 function Csvuploadmodal() {
-    const [show, setShow] = useState(false);
-  
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-  
     return (
-      <>
-        <Button variant="primary" onClick={handleShow}>
-          Upload a CSV
-        </Button>
-  
-        <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Close
-            </Button>
-            <Button variant="primary" onClick={handleClose}>
-              Save Changes
-            </Button>
-          </Modal.Footer>
-        </Modal>
+      <> 
+        <FlatfileButton
+            licenseKey="84df1e75-a4fe-4ef2-8e90-893e261a6576"
+            customer={{ userId: "12345" }}
+            settings={{
+              type: "Contact",
+              fields: [
+                { label: "Product Name", key: "productname" },
+                { label: "Manufacturer", key: "manufacturer" },
+                { label: "Part Number", key: "partnumber" },
+                { label: "Category", key: "productcategory" },
+                { label: "Dimensions", key: "dimensions" },
+                { label: "Colours", key: "productcolours" },
+                { label: "Product Description", key: "marketinginfo" },
+
+              ],
+              managed: true
+            }}
+            onData={async (results) => {
+              axios.post('http://localhost:8080/product/add', results.validData)
+                .then(res => console.log(res.data));
+              return "Done!";
+            }}
+        >
+          Import Contacts
+        </FlatfileButton>
       </>
     );
   }

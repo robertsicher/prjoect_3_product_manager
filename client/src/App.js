@@ -16,6 +16,7 @@ import ProfilePage from "./pages/ProfilePage";
 import Addsuccess from "./components/addsuccess/addsuccess";
 
 import Cloudinary from "./components/Cloudinary";
+import EditProduct from "./components/editproduct/editproduct";
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
 
           <Route path="/login" exact component={Login} />
           <Route path="/catalogue" exact component={Catalogue} />
+          <Route path="/edit/:id" component={EditProduct} />
           <Route path="/productsuccess" exact component={Addsuccess} />
           <Route path="/new-product" exact component={Productcreation} />
           <Route path="/export" exact component={CatalogueExport} />

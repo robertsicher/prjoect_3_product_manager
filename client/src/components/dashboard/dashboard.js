@@ -1,4 +1,5 @@
 import { Container } from "react-bootstrap";
+import Csvuploadmodal from "../csvuploadmodal/csvuploadmodal";
 
 
 function Dashboard() {
@@ -6,6 +7,7 @@ function Dashboard() {
     <div>
         <Container className="mt-2">
           <h1>Dashboard</h1>   
+          <Csvuploadmodal />
         </Container>
     </div>
   );

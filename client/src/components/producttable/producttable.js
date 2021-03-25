@@ -7,6 +7,9 @@ import {CSVLink} from 'react-csv';
 export default class ProductTable extends Component {
     constructor(props){
         super(props);
+
+        this.deleteProduct = this.deleteProduct.bind(this)
+
         this.state = {products: []};
     }
 
@@ -20,9 +23,17 @@ export default class ProductTable extends Component {
         })
     }
 
+    deleteProduct(id) {
+        axios.delete('http://localhost:8080/product/'+id)
+        .then(res => console.log(res.data));
+        this.setState({
+        products: this.state.products.filter(el => el._id !== id)
+        })
+    }
+
     productList(){ 
         return this.state.products.map( currentproduct =>{
-            return <TableRow product={currentproduct} key={currentproduct._id} />;
+            return <TableRow product={currentproduct} deleteProduct={this.deleteProduct} key={currentproduct._id} />;
         })
     }
 
@@ -38,8 +49,7 @@ export default class ProductTable extends Component {
                 <th style={{width: "3%"}}>Product #</th>
                 <th style={{width: "5%"}}>Thumbnail</th>
                 <th style={{width: "5%"}}>Product Title</th>
-                <th style={{width: "15%"}}>Product Description</th>
-                <th style={{width: "15%"}}>Dimensions</th>
+                <th style={{width: "15%"}}>Colour</th>
                 </tr>
             </thead>
             <tbody>
