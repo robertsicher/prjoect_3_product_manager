@@ -36,6 +36,42 @@ router.route('/add').post((req,res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
+router.route('/csvadd').post(async(req,res) => {
+    for(const item of req.body){
+
+    const productname = item.productname;
+    const manufacturer = item.manufacturer;
+    const partnumber = item.partnumber;
+    const productcategory = item.productcategory;
+    const dimensions = item.dimensions;
+    const productcolours = item.productcolours;
+    const marketinginfo = item.marketinginfo;
+    const  image_url = item.image_url;
+    console.log("Item", item);
+
+
+    const newProduct = new Product({
+        productname,
+        manufacturer,
+        partnumber,
+        productcategory,
+        dimensions,
+        productcolours,
+        marketinginfo,
+        image_url
+    });
+
+    try{ await newProduct.save()}
+    
+    catch(error) {
+        console.log('Error' + error)
+        res.status(400).json('Error: ' + error)
+        return
+    }
+    }     
+    res.json('Products Added!')
+});
+
 router.route('/:id').get((req,res) => {
     Product.findById(req.params.id)
     .then(() => res.json('Product'))

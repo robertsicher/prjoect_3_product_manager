@@ -36,7 +36,6 @@ const Product = mongoose.model(
     },
     image_url:{
       type:String,
-      unique:true,
       trim:true
     },
   })
