@@ -1,9 +1,25 @@
 import React from "react";
 import { Container } from "react-bootstrap";
+
+import Csvuploadmodal from "../csvuploadmodal/csvuploadmodal";
+
 import axios from "axios";
 import {Redirect,withRouter}from "react-router-dom";
 
+
 class Dashboard extends React.Component{
+
+
+function Dashboard() {
+  return (
+    <div>
+        <Container className="mt-2">
+          <h1>Dashboard</h1>   
+          <Csvuploadmodal />
+        </Container>
+    </div>
+  );
+}
 
   constructor(props) {
     super(props);
@@ -81,4 +97,5 @@ class Dashboard extends React.Component{
 
 
 export default Dashboard;
+
 

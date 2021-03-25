@@ -1,4 +1,4 @@
-import { Button, Modal, Form } from "react-bootstrap";
+import {Button, Form} from 'react-bootstrap';
 import React, { Component } from "react";
 
 import axios from "axios";
@@ -118,15 +118,6 @@ export default class Productcreationmodal extends Component {
     );
     return (
       <>
-        <Button variant="primary" className="mx-2" onClick={() => this.handleModalShowHide()}>
-          Add a new product
-        </Button>
-
-        <Modal show={this.state.showHide}>
-          <Modal.Header closeButton onClick={() => this.handleModalShowHide()}>
-            <Modal.Title>Create a new product</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
             <Form onSubmit={this.onSubmit}>
               <Form.Group controlId="exampleForm.ControlInput1">
                 <Form.Label>Product Name</Form.Label>
@@ -167,13 +158,6 @@ export default class Productcreationmodal extends Component {
                 Add Product
               </Button>
             </Form>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={() => this.handleModalShowHide()}>
-              Close
-            </Button>
-          </Modal.Footer>
-        </Modal>
       </>
     );
   }

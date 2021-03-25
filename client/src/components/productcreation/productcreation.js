@@ -1,5 +1,4 @@
-import { Container, Row } from "react-bootstrap";
-import Csvuploadmodal from "../csvuploadmodal/csvuploadmodal";
+import { Container, } from "react-bootstrap";
 import Productcreationmodal from "../productcreationformmodal/creationformmodal";
 
 import React from "react";
@@ -70,10 +69,14 @@ class Productcreation extends React.Component {
       <div>
         <h1>Add a new product</h1>
         <Container>
+
+                <Productcreationmodal />
+
           <Row>
             <Productcreationmodal />
             <Csvuploadmodal />
           </Row>
+
         </Container>
         {this.renderRedirect()}
       </div>
