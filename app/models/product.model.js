@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const Product = mongoose.model(
   "Product",
   new mongoose.Schema({
-   
+  
     productname: {
       type: String,
       unique: true,
@@ -38,6 +38,14 @@ const Product = mongoose.model(
       type:String,
       trim:true
     },
+    dateOfOrder:{
+      type:String,
+      trim :true
+    },
+    no_of_products:{
+      type:String,
+      trim :true
+    }
   })
 );
 

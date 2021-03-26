@@ -14,6 +14,7 @@ export default class Productcreationmodal extends Component {
     this.onChangeDimensions = this.onChangeDimensions.bind(this);
     this.onChangeProductColours = this.onChangeProductColours.bind(this);
     this.onChangeMarketingInfo = this.onChangeMarketingInfo.bind(this);
+    this.onNumberOfProductChange = this.onNumberOfProductChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
@@ -26,6 +27,7 @@ export default class Productcreationmodal extends Component {
       marketinginfo: "",
       image_url:"",
       showHide: false,
+      no_of_products:""
     };
   }
 
@@ -34,9 +36,15 @@ export default class Productcreationmodal extends Component {
   }
 
   onChangeProductname(e) {
+
     this.setState({
       productname: e.target.value,
     });
+  }
+  onNumberOfProductChange(e){
+    this.setState({
+      no_of_products: e.target.value
+    })
   }
 
   onChangeManufacturer(e) {
@@ -86,7 +94,8 @@ export default class Productcreationmodal extends Component {
       dimensions: this.state.dimensions,
       productcolours: this.state.productcolours,
       marketinginfo: this.state.marketinginfo,
-      image_url:this.state.image_url
+      image_url:this.state.image_url,
+      no_of_products:this.state.no_of_products
     };
 
     console.log(product);
@@ -131,7 +140,7 @@ export default class Productcreationmodal extends Component {
                       <Form.Group controlId="exampleForm.ControlInput1">
                         <Form.Label>Product Name</Form.Label>
                         <Form.Control type="textarea" required value={this.state.productname} onChange={this.onChangeProductname} />
-                        <button
+                        <button type="button"
                           onClick={() => {
                             widget.open();
                           }}
@@ -143,6 +152,11 @@ export default class Productcreationmodal extends Component {
                         <Form.Label>Part Number</Form.Label>
                         <Form.Control type="textarea" required value={this.state.partnumber} onChange={this.onChangePartNumber} />
                       </Form.Group>
+                      <Form.Group controlId="exampleForm.ControlInput1">
+                        <Form.Label>No Of Products</Form.Label>
+                        <Form.Control type="textarea" required value={this.state.no_of_products} onChange={this.onNumberOfProductChange} />
+                      </Form.Group>
+
                       <Form.Group controlId="exampleForm.ControlInput1">
                         <Form.Label>Manufacturer</Form.Label>
                         <Form.Control type="textarea" required value={this.state.manufacturer} onChange={this.onChangeManufacturer} />

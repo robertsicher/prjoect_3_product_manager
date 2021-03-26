@@ -15,6 +15,7 @@ function TableRow(props) {
                 <td className="align-middle p-0"><img width="150" src={props.product.image_url} alt="product"/></td>
                 <td className="align-middle">{props.product.productname}</td>
                 <td className="align-middle">{props.product.productcategory}</td>
+                <td className="align-middle">{props.product.no_of_products}</td>
                 </tr>
         
                     <Modal show={show} onHide={handleClose} size="lg">

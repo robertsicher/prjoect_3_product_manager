@@ -49,7 +49,10 @@ class Login extends Component {
   renderRedirect = () => {
     if (this.state.isLoggedIn) {
       console.log("user is logged in");
-      return <Redirect to="/profile" />;
+      return <Redirect   to={{
+        pathname: "/",
+        state: { show_login_alert: true }
+      }}/>;
     }
   };
   render() {
