@@ -154,8 +154,8 @@ export default class Productcreationmodal extends Component {
                         <Form.Control type="textarea" required value={this.state.partnumber} onChange={this.onChangePartNumber} />
                       </Form.Group>
 
-                      <Form.Group controlId="exampleForm.ControlInput1">
-                        <Form.Label>No Of Products</Form.Label>
+                      <Form.Group controlId="quantity">
+                        <Form.Label>Quantity of products</Form.Label>
                         <Form.Control type="textarea" required value={this.state.no_of_products} onChange={this.onNumberOfProductChange} />
                       </Form.Group>
 
