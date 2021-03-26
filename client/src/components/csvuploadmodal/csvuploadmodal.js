@@ -7,7 +7,7 @@ import axios from "axios";
 function Csvuploadmodal() {
     return (
       <> 
-        <FlatfileButton className="btn btn-secondary mx-2" size="lg"
+        <FlatfileButton className="btn btn-secondary m-2" size="lg"
             licenseKey="84df1e75-a4fe-4ef2-8e90-893e261a6576"
             customer={{ userId: "12345" }}
             settings={{

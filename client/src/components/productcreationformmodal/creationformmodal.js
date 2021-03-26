@@ -118,7 +118,7 @@ export default class Productcreationmodal extends Component {
     );
     return (
       <>
-                  <Button variant="primary" onClick={() => this.handleModalShowHide()} size="lg" className="mx-2">
+                  <Button variant="primary" onClick={() => this.handleModalShowHide()} size="lg" className="m-2">
                     Add a product
                   </Button>
 

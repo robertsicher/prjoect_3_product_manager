@@ -72,7 +72,8 @@ class Productcreation extends React.Component {
           <Row className="justify-content-center">
             <Productcreationmodal />
             <Csvuploadmodal />
-            <Link to="../../../../public/CSV-TEMPLATE.csv" target="_blank" download>Download the CSV template</Link>
+            <Link to="./CSV-TEMPLATE.csv" target="_blank" download className="btn btn-secondary btn-lg m-2">Download the CSV template</Link>
+            
           </Row>
 
         </Container>
