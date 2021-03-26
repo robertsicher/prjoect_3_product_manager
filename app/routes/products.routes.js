@@ -16,6 +16,8 @@ router.route('/add').post((req,res) => {
     const productcolours = req.body.productcolours;
     const marketinginfo = req.body.marketinginfo;
     const  image_url = req.body.image_url;
+    const dateOfOrder = new Date();
+    const no_of_products = req.body.no_of_products;
     console.log("add post req.body:", req.body);
     console.log("add post req.query:", req.query);
 
@@ -28,7 +30,9 @@ router.route('/add').post((req,res) => {
         dimensions,
         productcolours,
         marketinginfo,
-        image_url
+        image_url,
+        dateOfOrder,
+        no_of_products
     });
 
     newProduct.save()

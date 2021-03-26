@@ -92,7 +92,11 @@ export default class ProductTable extends Component {
                 <th style={{width: "3%"}}>Product #</th>
                 <th style={{width: "5%"}}>Thumbnail</th>
                 <th style={{width: "15%"}}>Product Title</th>
+                <th style={{width: "10%"}}>Colour</th>
                 <th style={{width: "10%"}}>Product Category</th>
+                <th style={{width: "15%"}}>No of products</th>
+
+
                 </tr>
             </thead>
             <tbody>
