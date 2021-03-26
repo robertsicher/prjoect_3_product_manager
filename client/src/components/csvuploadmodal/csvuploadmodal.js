@@ -21,6 +21,7 @@ function Csvuploadmodal() {
                 { label: "Colours", key: "productcolours" },
                 { label: "Product Description", key: "marketinginfo" },
                 { label: "Image", key: "image_url" },
+                { label: "Quantity of stock", key: "no_of_products" },
 
 
               ],
