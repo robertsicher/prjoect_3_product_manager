@@ -50,7 +50,7 @@ router.route('/csvadd').post(async(req,res) => {
     const dimensions = item.dimensions;
     const productcolours = item.productcolours;
     const marketinginfo = item.marketinginfo;
-    const  image_url = item.image_url;
+    const image_url = item.image_url;
     console.log("Item", item);
 
 

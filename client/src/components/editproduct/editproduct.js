@@ -1,4 +1,4 @@
-import {Button, Form, Container} from 'react-bootstrap';
+import {Button, Form, Container, Card} from 'react-bootstrap';
 import React, { Component } from "react";
 import axios from "axios";
 
@@ -13,6 +13,7 @@ export default class EditProduct extends Component {
     this.onChangeDimensions = this.onChangeDimensions.bind(this);
     this.onChangeProductColours = this.onChangeProductColours.bind(this);
     this.onChangeMarketingInfo = this.onChangeMarketingInfo.bind(this);
+    this.onChangeImage_URL = this.onChangeImage_URL.bind(this);
     this.onSubmit = this.onSubmit.bind(this); 
 
     this.state = {
@@ -23,9 +24,11 @@ export default class EditProduct extends Component {
       dimensions:'',
       productcolours:'',
       marketinginfo:'',
+      image_url:'',
       showHide : false,
     }
   };
+  
 
   componentDidMount() {
       axios.get('http://localhost:8080/product/'+this.props.match.params.id)
@@ -39,6 +42,7 @@ export default class EditProduct extends Component {
             dimensions: response.data.dimensions,
             productcolours: response.data.productcolours,
             marketinginfo: response.data.marketinginfo,
+            image_url: response.data.image_url,
           })
       })
       .catch(function (error) {
@@ -93,6 +97,12 @@ export default class EditProduct extends Component {
     });
   }
 
+  onChangeImage_URL(e){
+    this.setState({
+      image_url: e.target.value
+    });
+  }
+
   onSubmit(e){
     e.preventDefault();
 
@@ -104,6 +114,7 @@ export default class EditProduct extends Component {
       dimensions: this.state.dimensions,
       productcolours: this.state.productcolours,
       marketinginfo: this.state.marketinginfo,
+      image_url: this.state.image_url,
     }
 
     console.log(product);
@@ -121,42 +132,52 @@ export default class EditProduct extends Component {
   
     render (){
       return(
-      <Container>
-          <Form onSubmit={this.onSubmit}>
-              <Form.Group controlId="exampleForm.ControlInput1">
-                <Form.Label>Product Name</Form.Label>
-                <Form.Control type="textarea" required defaultValue={this.state.productname} onChange={this.onChangeProductname}/>
-              </Form.Group>
-              <Form.Group controlId="exampleForm.ControlInput1">
-                <Form.Label>Part Number</Form.Label>
-                <Form.Control type="textarea" required value={this.state.partnumber} onChange={this.onChangePartNumber}/>
-              </Form.Group>
-              <Form.Group controlId="exampleForm.ControlInput1">
-                <Form.Label>Manufacturer</Form.Label>
-                <Form.Control type="textarea" required value={this.state.manufacturer} onChange={this.onChangeManufacturer}/>
-              </Form.Group>
-              <Form.Group controlId="exampleForm.ControlInput1">
-                <Form.Label>Product Category</Form.Label>
-                <Form.Control type="textarea" required value={this.state.productcategory} onChange={this.onChangeProductCategory}/>
-              </Form.Group>
-              <Form.Group controlId="exampleForm.ControlInput1">
-                <Form.Label>Dimensions</Form.Label>
-                <Form.Control type="textarea" required value={this.state.dimensions} onChange={this.onChangeDimensions}/>
-              </Form.Group>
-              <Form.Group controlId="exampleForm.ControlInput1">
-                <Form.Label>Colours</Form.Label>
-                <Form.Control type="textarea" required value={this.state.productcolours} onChange={this.onChangeProductColours}/>
-              </Form.Group>
-              <Form.Group controlId="exampleForm.ControlInput1">
-                <Form.Label>Marketing Text</Form.Label>
-                <Form.Control as="textarea" rows={5} required value={this.state.marketinginfo} onChange={this.onChangeMarketingInfo}/>
-              </Form.Group>
-              <Button variant="primary" type="submit" value="Edit Product">
-              Add Product
-            </Button>
-            </Form>
+      <Container className="mt-2">
+                  <Card>
+                        <Card.Body>
+                        <Form onSubmit={this.onSubmit}>
+                          <Form.Group controlId="exampleForm.ControlInput1">
+                            <Form.Label>Product Name</Form.Label>
+                            <Form.Control type="textarea" required defaultValue={this.state.productname} onChange={this.onChangeProductname}/>
+                          </Form.Group>
+                          <Form.Group controlId="exampleForm.ControlInput1">
+                            <Form.Label>Part Number</Form.Label>
+                            <Form.Control type="textarea" required value={this.state.partnumber} onChange={this.onChangePartNumber}/>
+                          </Form.Group>
+                          <Form.Group controlId="exampleForm.ControlInput1">
+                            <Form.Label>Image URL</Form.Label>
+                            <Form.Control type="textarea" required value={this.state.image_url} onChange={this.onChangeImage_URL}/>
+                          </Form.Group>
+                          <Card.Img variant="top" src={this.state.image_url} alt="product image"/>
+                          <Form.Group controlId="exampleForm.ControlInput1">
+                            <Form.Label>Manufacturer</Form.Label>
+                            <Form.Control type="textarea" required value={this.state.manufacturer} onChange={this.onChangeManufacturer}/>
+                          </Form.Group>
+                          <Form.Group controlId="exampleForm.ControlInput1">
+                            <Form.Label>Product Category</Form.Label>
+                            <Form.Control type="textarea" required value={this.state.productcategory} onChange={this.onChangeProductCategory}/>
+                          </Form.Group>
+                          <Form.Group controlId="exampleForm.ControlInput1">
+                            <Form.Label>Dimensions</Form.Label>
+                            <Form.Control type="textarea" required value={this.state.dimensions} onChange={this.onChangeDimensions}/>
+                          </Form.Group>
+                          <Form.Group controlId="exampleForm.ControlInput1">
+                            <Form.Label>Colours</Form.Label>
+                            <Form.Control type="textarea" required value={this.state.productcolours} onChange={this.onChangeProductColours}/>
+                          </Form.Group>
+                          <Form.Group controlId="exampleForm.ControlInput1">
+                            <Form.Label>Marketing Text</Form.Label>
+                            <Form.Control as="textarea" rows={5} required value={this.state.marketinginfo} onChange={this.onChangeMarketingInfo}/>
+                          </Form.Group>
+                          <Button variant="primary" type="submit" value="Edit Product">
+                          Submit Edits
+                        </Button>
+                        </Form>
+                        </Card.Body>
+                      </Card>
         </Container>
       );
     }
   }
+  
   

@@ -62,7 +62,8 @@ class Catalogue extends React.Component{
     }
   };
   render(){
-    return ( <div>
+    return ( 
+    <div className="mt-3">
       <h1>Catalogue</h1>
       {this.renderRedirect()}
       <ProductTable />
