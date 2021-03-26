@@ -13,6 +13,7 @@ class Login extends Component {
       isLoggedIn: false,
       show_alert: false,
       alert_message: "",
+      firstLogged:false
     };
   }
   
@@ -36,7 +37,7 @@ class Login extends Component {
       if (resp.data.status) {
         localStorage.setItem("isLoggedIn", true);
         localStorage.setItem("@token", resp.data.accessToken);
-        this.setState({ isLoggedIn: true });
+        this.setState({ isLoggedIn: true ,firstLogged:true});
       } else {
         this.setState({ show_alert: true, alert_message: resp.data.message });
       }
@@ -47,10 +48,16 @@ class Login extends Component {
   };
 
   renderRedirect = () => {
+    if(this.state.firstLogged){
+      return <Redirect   to={{
+        pathname: "/",
+        state: { show_login_alert: true }
+      }}/>;
+    }
     if (this.state.isLoggedIn) {
       console.log("user is logged in");
       return <Redirect   to={{
-        pathname: "/",
+        pathname: "/profile",
         state: { show_login_alert: true }
       }}/>;
     }
