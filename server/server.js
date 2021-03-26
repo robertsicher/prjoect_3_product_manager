@@ -6,6 +6,8 @@ const authUser = require("./app/routes/auth.routes");
 const retriveUser = require("./app/routes/user.routes");
 const productRouter = require('./app/routes/products.routes');
 const app = express();
+
+const path = require("path")
 var corsOptions = {
   origin: "http://localhost:3000",
 };
@@ -15,7 +17,8 @@ app.use(bodyParser.json());
 //Parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 const db = require("./app/models");
-
+const { response } = require("express");
+app.use(express.static(path.join(__dirname, '../client/build')));
 
 const Role = db.role;
 const mongoUrl = process.env.MONGODB_URI
@@ -31,8 +34,10 @@ db.mongoose.connect(mongoUrl, {
     process.exit();
   });
 // Simple route
-app.get("/", (req, res) => {
-  res.json({ message: "Welcome to Mern Authentication" });
+
+app.get('/', (req, res) => {
+  // res.send("test")
+  res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
 });
 //Routes
 app.use("/", authUser);
