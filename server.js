@@ -31,9 +31,7 @@ db.mongoose.connect(mongoUrl, {
     process.exit();
   });
 // Simple route
-app.get("/", (req, res) => {
-  res.json({ message: "Welcome to Mern Authentication" });
-});
+
 //Routes
 app.use("/", authUser);
 app.use("/", retriveUser);
