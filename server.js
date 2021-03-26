@@ -6,6 +6,7 @@ const authUser = require("./app/routes/auth.routes");
 const retriveUser = require("./app/routes/user.routes");
 const productRouter = require('./app/routes/products.routes');
 const app = express();
+const path = require("path");
 var corsOptions = {
   origin: "http://localhost:3000",
 };
@@ -31,6 +32,9 @@ db.mongoose.connect(mongoUrl, {
     process.exit();
   });
 // Simple route
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+ });
 
 //Routes
 app.use("/", authUser);
