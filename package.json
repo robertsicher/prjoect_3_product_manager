@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     
- "client": "cd client && npm run build",
- "server": "cd server && npm start",
- "start": "npm run client  && npm run server"
+    "client": "cd client && npm run build",
+    "server": "cd server && npm start",
+    "start": "cd server && node server.js",
+     "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "repository": {
     "type": "git",
