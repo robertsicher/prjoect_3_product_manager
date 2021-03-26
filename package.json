@@ -1,24 +1,34 @@
 {
-  "name": "prjoect_3_product_manager",
+  "name": "project_3_product_manager",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    
- "client": "cd client && npm run build",
- "server": "cd server && npm start",
- "start": "cd server && node server.js",
+
+ "start": "node server.js",
   "heroku-postbuild": "cd client && npm install && npm run build"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/robertsicher/prjoect_3_product_manager.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/robertsicher/prjoect_3_product_manager/issues"
+  "dependencies": {
+    "axios": "^0.21.1", 
+    "bcryptjs": "^2.4.3",
+    "body": "^5.1.0",
+    "body-parser": "^1.19.0",
+    "config": "^3.3.6",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-middleware": "^3.4.2",
+    "jsonwebtoken": "^8.5.1",
+    "jwt-decode": "^3.1.2",
+    "mongoose": "^5.9.1",
+    "nodemon": "^2.0.7",
+    "parser": "^0.1.4",
+    "react-csv": "^2.0.3"
   },
-  "homepage": "https://github.com/robertsicher/prjoect_3_product_manager#readme"
+  "devDependencies": {
+    "concurrently": "^6.0.0"
+  }
 }
