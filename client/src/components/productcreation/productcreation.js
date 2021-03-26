@@ -4,7 +4,7 @@ import Csvuploadmodal from '../csvuploadmodal/csvuploadmodal'
 
 import React from "react";
 import axios from "axios";
-import { Redirect} from "react-router-dom";
+import { Redirect, Link} from "react-router-dom";
 class Productcreation extends React.Component {
   constructor(props) {
     super(props);
@@ -67,11 +67,13 @@ class Productcreation extends React.Component {
   render() {
     return (
       <div>
-        <h1>Add a new product</h1>
         <Container>
-          <Row>
+        <h1 className="mt-3">Add a new product</h1>
+          <Row className="justify-content-center">
             <Productcreationmodal />
             <Csvuploadmodal />
+            <Link to="./CSV-TEMPLATE.csv" target="_blank" download className="btn btn-secondary btn-lg m-2">Download the CSV template</Link>
+            
           </Row>
 
         </Container>
