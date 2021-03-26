@@ -18,15 +18,23 @@ function TableRow(props) {
                 </tr>
         
                     <Modal show={show} onHide={handleClose} size="lg">
+                    <Modal.Header closeButton>
+                      <Modal.Title>{props.product.partnumber}</Modal.Title>
+                    </Modal.Header>
                       <Modal.Body>
                       <Card>
                         <Card.Body>
-                          <Card.Title>{props.product.partnumber}</Card.Title>
-                          <Card.Subtitle className="mb-2 text-muted">{props.product.productname}</Card.Subtitle>
-                          <Card.Img variant="top" src={props.product.image_url} alt="product image"/>
+                          <Card.Title>{props.product.productname} | {props.product.productcategory}</Card.Title>
+                          <Card.Img className="mb-5" variant="top" src={props.product.image_url} alt="product image"/>
                           <Card.Text>
-                            <h4>Marketing</h4>
+                            <h4>Marketing text</h4>
                           {props.product.marketinginfo}
+                          </Card.Text>
+                          <Card.Text>
+                          Colour: {props.product.productcolours}
+                          </Card.Text>
+                          <Card.Text>
+                          Dimensions: {props.product.dimensions}
                           </Card.Text>
                           <Card.Link><Link to={"/edit/"+props.product._id}><i class="fas fa-edit"></i> Edit</Link></Card.Link>
                           <Card.Link><a href="#" onClick={() => { props.deleteProduct(props.product._id) }}><i class="fas fa-trash-alt"></i> Delete</a></Card.Link>

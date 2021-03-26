@@ -7,7 +7,7 @@ import axios from "axios";
 function Csvuploadmodal() {
     return (
       <> 
-        <FlatfileButton
+        <FlatfileButton className="btn btn-secondary mx-2" size="lg"
             licenseKey="84df1e75-a4fe-4ef2-8e90-893e261a6576"
             customer={{ userId: "12345" }}
             settings={{
@@ -30,9 +30,10 @@ function Csvuploadmodal() {
               axios.post('http://localhost:8080/product/csvadd', results.validData)
                 .then(res => console.log(res.data));
               return "Done!";
+              window.location="/catalogue"
             }}
         >
-          Import Contacts
+          Add a CSV
         </FlatfileButton>
       </>
     );

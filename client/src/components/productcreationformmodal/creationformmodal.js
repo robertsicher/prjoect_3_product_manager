@@ -118,52 +118,52 @@ export default class Productcreationmodal extends Component {
     );
     return (
       <>
-                  <Button variant="primary" onClick={() => this.handleModalShowHide()}>
-                    Launch demo modal
+                  <Button variant="primary" onClick={() => this.handleModalShowHide()} size="lg" className="mx-2">
+                    Add a product
                   </Button>
 
                   <Modal show={this.state.showHide}>
                     <Modal.Header closeButton onClick={() => this.handleModalShowHide()}>
-                      <Modal.Title>Modal heading</Modal.Title>
+                      <Modal.Title>Add a product</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                     <Form onSubmit={this.onSubmit}>
-                      <Form.Group controlId="exampleForm.ControlInput1">
+                      <Form.Group controlId="Product name">
                         <Form.Label>Product Name</Form.Label>
                         <Form.Control type="textarea" required value={this.state.productname} onChange={this.onChangeProductname} />
-                        <button
+                        <button className="btn btn-secondary mt-3"
                           onClick={() => {
                             widget.open();
                           }}
                         >
-                          Upload photo
+                          Add an image
                         </button>
                       </Form.Group>
-                      <Form.Group controlId="exampleForm.ControlInput1">
+                      <Form.Group controlId="partnumber">
                         <Form.Label>Part Number</Form.Label>
                         <Form.Control type="textarea" required value={this.state.partnumber} onChange={this.onChangePartNumber} />
                       </Form.Group>
-                      <Form.Group controlId="exampleForm.ControlInput1">
+                      <Form.Group controlId="manufacturer">
                         <Form.Label>Manufacturer</Form.Label>
                         <Form.Control type="textarea" required value={this.state.manufacturer} onChange={this.onChangeManufacturer} />
                       </Form.Group>
-                      <Form.Group controlId="exampleForm.ControlInput1">
+                      <Form.Group controlId="category">
                         <Form.Label>Product Category</Form.Label>
                         <Form.Control type="textarea" required value={this.state.productcategory} onChange={this.onChangeProductCategory} />
                       </Form.Group>
-                      <Form.Group controlId="exampleForm.ControlInput1">
+                      <Form.Group controlId="Dimesnions">
                         <Form.Label>Dimensions</Form.Label>
                         <Form.Control type="textarea" required value={this.state.dimensions} onChange={this.onChangeDimensions} />
                       </Form.Group>
-                      <Form.Group controlId="exampleForm.ControlInput1">
+                      <Form.Group controlId="colours">
                         <Form.Label>Colours</Form.Label>
                         <Form.Control type="textarea" required value={this.state.productcolours} onChange={this.onChangeProductColours} />
                       </Form.Group>
-                      <Form.Group controlId="exampleForm.ControlInput1">
+                      <Form.Group controlId="marketingfinfo">
                         <Form.Label>Marketing Text</Form.Label>
                         <Form.Control as="textarea" rows={5} required value={this.state.marketinginfo} onChange={this.onChangeMarketingInfo} />
                       </Form.Group>
-                      <Button variant="primary" type="submit" value="Create New Product">
+                      <Button variant="primary" type="submit" className="mr-3" value="Create New Product">
                         Add Product
                       </Button>
                       <Button variant="secondary" onClick={() => this.handleModalShowHide()}>
