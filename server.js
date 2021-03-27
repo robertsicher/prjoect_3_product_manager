@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 const db = require("./app/models");
 const { response } = require("express");
-app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(express.static('client/build'));
 
 const Role = db.role;
 const mongoUrl = process.env.MONGODB_URI
@@ -37,7 +37,7 @@ db.mongoose.connect(mongoUrl, {
 
 app.get('/', (req, res) => {
   // res.send("test")
-  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  res.sendFile(path.join(__dirname, "client/build/",'index.html'));
 });
 //Routes
 app.use("/", authUser);
