@@ -7,7 +7,11 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "client": "cd client && npm run start",
     "server": "npx nodemon server.js",
-    "dev": "concurrently --kill-others-on-fail 'npm:server' 'npm:client'"
+    "dev": "concurrently --kill-others-on-fail 'npm:server' 'npm:client'",
+    "start": "node server.js",
+    "install": "cd client && npm install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build"
   },
   "keywords": [],
   "author": "",
