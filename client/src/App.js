@@ -1,5 +1,5 @@
 import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Navigation from "./components/nav/nav";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import Dashboard from "./components/dashboard/dashboard";
