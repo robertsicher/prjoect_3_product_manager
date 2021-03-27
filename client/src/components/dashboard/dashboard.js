@@ -2,10 +2,10 @@ import React from "react";
 import { Container } from "react-bootstrap";
 // import { Chart } from 'react-charts'
 import axios from "axios";
-import { Redirect, Link } from "react-router-dom";
+import { Redirect, Link ,withRouter} from "react-router-dom";
 import { NotificationContainer, NotificationManager } from "react-notifications";
 import { Bar, Line } from "react-chartjs-2";
-export default class Dashboard extends React.Component {
+ class Dashboard extends React.Component {
   constructor(props) {
     super(props);
 
@@ -172,3 +172,4 @@ export default class Dashboard extends React.Component {
     );
   }
 }
+export default withRouter(Dashboard)

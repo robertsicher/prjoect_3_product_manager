@@ -1,7 +1,7 @@
 import React from "react";
 import ProductTable from "../producttable/producttable";
 import axios from "axios";
-import { Redirect,  } from "react-router-dom";
+import { Redirect,withRouter } from "react-router-dom";
 class Catalogue extends React.Component{
   constructor(props) {
     super(props);
@@ -39,7 +39,7 @@ class Catalogue extends React.Component{
 
     // console.log(this.retriveData());
     try {
-      const resp = await axios.get("http://localhost:8080/api/test/user", {
+      const resp = await axios.get("/api/test/user", {
         headers: {
           "Content-Type": "application/json",
           "x-access-token": localStorage.getItem("@token"),
@@ -72,4 +72,4 @@ class Catalogue extends React.Component{
 }
 
 
-export default Catalogue;
+export default withRouter(Catalogue);
