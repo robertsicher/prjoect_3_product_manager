@@ -50,7 +50,7 @@ export default class Dashboard extends React.Component {
 
   getProducts() {
     axios
-      .get("http://localhost:8080/product/")
+      .get("/product/")
       .then((response) => {
         this.setState({ products: response.data, products_length: response.data.length });
 
@@ -78,7 +78,7 @@ export default class Dashboard extends React.Component {
 
     // console.log(this.retriveData());
     try {
-      const resp = await axios.get("http://localhost:8080/api/test/user", {
+      const resp = await axios.get("/api/test/user", {
         headers: {
           "Content-Type": "application/json",
           "x-access-token": localStorage.getItem("@token"),

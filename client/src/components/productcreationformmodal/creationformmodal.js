@@ -100,7 +100,7 @@ export default class Productcreationmodal extends Component {
 
     console.log(product);
 
-    axios.post("http://localhost:8080/product/add", product).then((res) => console.log(res.data));
+    axios.post("/product/add", product).then((res) => console.log(res.data));
 
     window.location = "/productsuccess";
   }

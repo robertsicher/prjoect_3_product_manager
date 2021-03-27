@@ -21,7 +21,7 @@ export default class ProductTable extends Component {
 //   }
     getProducts() {
       axios
-      .get("http://localhost:8080/product/")
+      .get("/product/")
       .then((response) => {
         this.setState({ products: response.data, filteredProducts: response.data });
       })
@@ -35,7 +35,7 @@ export default class ProductTable extends Component {
   }
 
     deleteProduct(id) {
-        axios.delete('http://localhost:8080/product/'+id)
+        axios.delete('/product/'+id)
         .then(res => this.getProducts());
         this.setState({
         products: this.state.products.filter(el => el._id !== id)

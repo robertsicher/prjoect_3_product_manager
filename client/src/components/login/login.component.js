@@ -30,7 +30,7 @@ class Login extends Component {
     };
     try {
       const resp = await axios.post(
-        "http://localhost:8080/api/auth/signin",
+        "/api/auth/signin",
         creadentials
       );
 

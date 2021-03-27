@@ -16,7 +16,7 @@ export default class CatalogueExport extends Component {
     }
 
     async componentDidMount(){
-        axios.get('http://localhost:8080/product/')
+        axios.get('/product/')
         .then(response => {
             this.setState({ products: response.data})
         })
@@ -48,7 +48,7 @@ export default class CatalogueExport extends Component {
     
         // console.log(this.retriveData());
         try {
-          const resp = await axios.get("http://localhost:8080/api/test/user", {
+          const resp = await axios.get("/api/test/user", {
             headers: {
               "Content-Type": "application/json",
               "x-access-token": localStorage.getItem("@token"),

@@ -30,7 +30,7 @@ class Signup extends Component {
       email: this.state.email,
     };
     try {
-      const resp = await axios.post("http://localhost:8080/api/auth/signup", creadentials);
+      const resp = await axios.post("/api/auth/signup", creadentials);
       if (resp.data.status) {
         localStorage.setItem("isLoggedIn", true);
         localStorage.setItem("@token", resp.data.accessToken);

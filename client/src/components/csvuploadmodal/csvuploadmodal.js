@@ -27,7 +27,7 @@ function Csvuploadmodal() {
               managed: true
             }}
             onData={async (results) => {
-              axios.post('http://localhost:8080/product/csvadd', results.validData)
+              axios.post('/product/csvadd', results.validData)
                 .then(res => console.log(res.data));
               return "Done!";
               window.location="/catalogue"
